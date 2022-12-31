@@ -1,0 +1,11 @@
+    <div>LOGIN</div><br>
+            <p class="error"> <i>{{error}}</i> </p>
+    <form action="/login" method="post">
+        <label for="email">EMAIL</label>
+        <input type="text" id="email" name="email" placeholder="email" ><br><br>
+        <label for="password">PASSWORD</label>
+        <input type="password" id="password" name="password" placeholder="password.."><br><br>
+        <input type="submit" value="Sign In">
+        <hr>
+        <button type="button" onclick="signInWithGoogle()">Sign In with Google</button>
+    </form>
