@@ -1,6 +1,10 @@
 <h1 style="text-transform:uppercase">WELCOME TO THE DASHBOARD {{user}}!...</h1><br>
 
-<img src="{{picture}}" alt="no picture to display" srcset="" width="200px" height="200px"><br>
+{{#if picture}}
+    <img src="{{picture}}" alt="no picture to display" srcset="" width="200px" height="200px"><br>
+{{else}}
+    <h2>Please provide your profile photo or sign in with Google..</h2>
+{{/if}}
 
 <li>
     <a href="/logout">LOGOUT</a>
