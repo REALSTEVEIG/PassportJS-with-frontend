@@ -52,7 +52,7 @@ app.use('/', authRouter)
 
 //signup with google
 app.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile'] }));
+  passport.authenticate('google', { scope: ["email", "profile"] }));
 
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
@@ -60,7 +60,7 @@ app.get('/auth/google/callback',
     // Successful authentication, redirect home.
     res.redirect('/dashboard');
   });
-  
+
 app.use('/', pagesRouter)
 
 const start = async () => {

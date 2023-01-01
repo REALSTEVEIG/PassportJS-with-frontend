@@ -9,7 +9,6 @@ passport.use(new GoogleStrategy({
   }, async (request, accessToken, refreshToken, profile, done) => {
     try {
             console.log(profile)
-            console.log(request)
         let existingUser = await User.findOne({ 'id': profile.id });
 
         if (existingUser) {
@@ -21,8 +20,7 @@ passport.use(new GoogleStrategy({
             method: 'google',
             id: profile.id,
             username: profile.displayName,
-//          email: profile.emails[0].value
-            email: "steveoke2@gmail.com"
+            email: profile.emails[0].value
         });
         await newUser.save();
         return done(null, newUser);
