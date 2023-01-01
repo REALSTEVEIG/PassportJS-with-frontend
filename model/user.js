@@ -10,7 +10,10 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-      }
+      },
+    picture : {
+      type : String
+    }
   });
 
 userSchema.plugin(passportLocalMongoose, {

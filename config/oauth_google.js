@@ -20,7 +20,8 @@ passport.use(new GoogleStrategy({
             method: 'google',
             id: profile.id,
             username: profile.displayName,
-            email: profile.emails[0].value
+            email: profile.emails[0].value,
+            picture : profile.photos[0].value
         });
         await newUser.save();
         return done(null, newUser);
