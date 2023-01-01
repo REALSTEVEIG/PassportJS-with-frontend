@@ -2,11 +2,16 @@ const mongoose = require('mongoose')
 const passportLocalMongoose = require('passport-local-mongoose')
 
 const userSchema = new mongoose.Schema({
-  //Provide more schemas if you desire.
-  username  : {
-    type : String
-  }
-})
+    id : {
+      type : String
+    },
+    username: {
+      type: String,
+    },
+    email: {
+        type: String,
+      }
+  });
 
 userSchema.plugin(passportLocalMongoose, {
     usernameField: 'email',

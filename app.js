@@ -1,9 +1,11 @@
 require('dotenv').config()
+require('./config/oauth_google')
 
 const express = require('express')
 const app = express()
 const port = 5000
 const authRouter = require('./routes/auth')
+// const authWithGoogle = require('./routes/oauth_google')
 const pagesRouter = require('./routes/pages')
 const path = require('path')
 const connectDB = require('./db/connect')
@@ -47,6 +49,18 @@ app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 
 app.use('/', authRouter)
+
+//signup with google
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile'] }));
+
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/dashboard');
+  });
+  
 app.use('/', pagesRouter)
 
 const start = async () => {
